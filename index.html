@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rekap Keuangan PT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Rekap Keuangan</h1>
+    <nav id="nav" aria-label="Menu">
+      <button type="button" data-tab="rekap" class="active">Rekap</button>
+      <button type="button" data-tab="pembayaran">Pembayaran</button>
+      <button type="button" data-tab="paket">Paket</button>
+      <button type="button" data-tab="pengeluaran">Pengeluaran</button>
+      <button type="button" data-tab="data">Data</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- REKAP -->
+    <section id="tab-rekap" class="tab">
+      <div class="row">
+        <label for="bulan">Bulan</label>
+        <input type="month" id="bulan">
+      </div>
+
+      <div id="cards" class="cards"></div>
+
+      <h2>Pemasukan vs pengeluaran (6 bulan)</h2>
+      <div id="chart" class="chart"></div>
+
+      <h2>Piutang <small>(belum lunas)</small></h2>
+      <div id="piutang"></div>
+
+      <h2>Paket hampir habis <small>(sisa 1&ndash;2 sesi)</small></h2>
+      <div id="hampirHabis"></div>
+
+      <h2>Klien aktif &amp; tidak aktif</h2>
+      <div id="klien"></div>
+
+      <h2>Pemasukan per klien <small>(bulan terpilih)</small></h2>
+      <div id="perKlien"></div>
+
+      <h2>Pemasukan per paket <small>(bulan terpilih)</small></h2>
+      <div id="perPaket"></div>
+    </section>
+
+    <!-- PEMBAYARAN -->
+    <section id="tab-pembayaran" class="tab" hidden>
+      <h2>Catat pembayaran</h2>
+      <form id="form-pembayaran" class="form"></form>
+      <div id="table-pembayaran"></div>
+    </section>
+
+    <!-- PAKET -->
+    <section id="tab-paket" class="tab" hidden>
+      <h2>Paket klien</h2>
+      <form id="form-paket" class="form"></form>
+      <div id="table-paket"></div>
+    </section>
+
+    <!-- PENGELUARAN -->
+    <section id="tab-pengeluaran" class="tab" hidden>
+      <h2>Catat pengeluaran</h2>
+      <form id="form-pengeluaran" class="form"></form>
+      <div id="table-pengeluaran"></div>
+    </section>
+
+    <!-- DATA -->
+    <section id="tab-data" class="tab" hidden>
+      <h2>Cadangkan &amp; pulihkan</h2>
+      <p class="muted">Data tersimpan di browser ini saja. Ekspor secara berkala sebagai cadangan.</p>
+      <div class="row wrap">
+        <button type="button" id="btn-ekspor">Ekspor JSON</button>
+        <label class="file">Impor JSON (menimpa semua data)
+          <input type="file" id="file-json" accept="application/json,.json">
+        </label>
+      </div>
+
+      <h2>Impor dari CSV / Excel</h2>
+      <p class="muted">
+        Simpan sheet sebagai CSV, baris pertama berisi nama kolom. Pemisah koma atau titik koma.<br>
+        <b>Pembayaran:</b> tanggal, klien, paket, jumlah, status, jatuhTempo<br>
+        <b>Paket:</b> klien, paket, totalSesi, sesiTerpakai<br>
+        <b>Pengeluaran:</b> tanggal, kategori, keterangan, jumlah
+      </p>
+      <div class="row wrap">
+        <select id="csv-jenis">
+          <option value="pembayaran">Pembayaran</option>
+          <option value="paket">Paket</option>
+          <option value="pengeluaran">Pengeluaran</option>
+        </select>
+        <input type="file" id="file-csv" accept=".csv,text/csv">
+      </div>
+
+      <h2>Lainnya</h2>
+      <div class="row wrap">
+        <button type="button" id="btn-contoh">Isi data contoh</button>
+        <button type="button" id="btn-hapus" class="danger">Hapus semua data</button>
+      </div>
+      <p id="pesan" class="muted" role="status"></p>
+    </section>
+  </main>
+
+  <script src="rekap.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "pt-rekap-keuangan",
+  "version": "1.0.0",
+  "description": "Rekap keuangan untuk personal trainer: pemasukan, piutang, paket klien, dan pengeluaran.",
+  "private": true,
+  "scripts": {
+    "start": "npx http-server . -p 8080 -c-1",
+    "test": "node --test"
+  },
+  "license": "MIT"
+}
